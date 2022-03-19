@@ -15,6 +15,7 @@ class TermNode:
         self.name = name
         self.kind = kind
         self.links = links
+        self.sentences = list()
 
     def get_name(self) -> str:
         '''
@@ -82,3 +83,24 @@ class TermNode:
         '''
 
         self.links.append(TermNode(name, kind))
+
+    def add_sentence(self, sentence: str) -> None:
+        '''
+        add contextual sentence to the node
+        '''
+
+        self.sentences.append(sentence)
+
+    def get_sentences(self) -> list:
+        '''
+        get all sentences associated
+        '''
+
+        return self.sentences
+
+    def to_string(self) -> str:
+        '''
+        return string representation for corpus utility
+        '''
+
+        return self.get_name() + " - " + self.get_type() + " - " + " ".join(self.get_sentences())

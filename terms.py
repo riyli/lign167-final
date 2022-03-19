@@ -19,7 +19,7 @@ for i in range(len(medline_filenames)):
 # create node collections, parse files
 
 drugbank = NodeCollection(drugbank_filenames)
-drugbank.parse()
+drugbank.make_corpus()
 
 medline = NodeCollection(medline_filenames)
-medline.parse()
+medline.make_corpus()
