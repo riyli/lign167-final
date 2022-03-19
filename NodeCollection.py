@@ -13,12 +13,14 @@ class NodeCollection:
         '''
         parse xml files in dataset to find names and types of drugs
         does not account for links, but isolates the named entities
+        builds corpus through parsing relevant sentences
 
         @params:
             xml: the current file being passed in
 
         @returns:
-            a dictionary of nodes in format {node name : node}'''
+            a dictionary of nodes in format {node name : node}
+        '''
 
         nodes = dict()
 
@@ -112,7 +114,7 @@ class NodeCollection:
         corpus = str()
 
         for term, node in self.nodes.items():
-            corpus += node.to_string() + "\n"
+            corpus = corpus + node.to_string() + "\n" if node.get_sentences() != list() else corpus
         
         self.corpus = corpus
 
